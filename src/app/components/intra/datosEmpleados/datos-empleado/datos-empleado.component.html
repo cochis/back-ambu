@@ -1,0 +1,162 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <H1>Datos empleados</H1>
+        <div style="margin-bottom: 1em">
+            <button type="button" pButton icon="pi pi-chevron-up" (click)="openPrev()" style="margin-right:.25em"></button>
+            <button type="button" pButton icon="pi pi-chevron-down" (click)="openNext()"></button>
+        </div>
+
+
+        <p-table #dt [columns]="cols" [value]="datosEmpleados" selectionMode="multiple" [(selection)]="selectedDatosEmpleados" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="caption">
+                <!-- <div style="text-align: right">
+                                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                                <input type="text" pInputText size="50" placeholder="Busqueda" (input)="dt.filterGlobal($event.target.value, 'empleados')" style="width:auto">
+                            </div> -->
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar todos" (click)="dt.exportCSV()" style="float:left"></button>
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar seleccion" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr class="text-center">
+                    <th>Clave de empleado</th>
+                    <th>Fecha de ingreso</th>
+                    <th>Nombre</th>
+                    <th>Puesto</th>
+                    <th>Sueldo</th>
+                    <th>Salud</th>
+                    <th>Legal</th>
+                    <th>Domicilio</th>
+                    <th>Familia</th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData" class="text-center">
+                    <td>
+                        {{rowData.clvEmpleado}}
+                    </td>
+                    <td>
+                        {{rowData.fechaIngreso}}
+                    </td>
+                    <td>
+                        {{rowData.nombreCompleto}}
+                    </td>
+                    <td>
+                        {{rowData.puesto}}
+                    </td>
+                    <td>
+                        {{rowData.sueldo}}
+                    </td>
+                    <td>
+                        <button pButton type="button" pTooltip="Salud" (click)="showSalud( rowData.clvEmpleado)" tooltipPosition="top"> <i class="fas fa-file-medical" ></i></button>
+
+                    </td>
+                    <td>
+                        <button pButton type="button" pTooltip="Legal" (click)="showLegal(rowData.clvEmpleado)" tooltipPosition="top"> <i class="fas fa-balance-scale" ></i></button>
+                    </td>
+                    <td>
+                        <button pButton type="button" pTooltip="Domicilio" (click)="showDomicilio(rowData.clvEmpleado)" tooltipPosition="top"> <i class="fas fa-map-marker-alt" ></i></button>
+                    </td>
+                    <td>
+                        <button pButton type="button" pTooltip="Familia" (click)="showFamilia(rowData.clvEmpleado)" tooltipPosition="top"> <i class="fas fa-people-carry" ></i></button>
+                    </td>
+                    <!-- 
+                                <td>
+                                    <a pTooltip="Editar" tooltipPosition="top" class="pointer" [routerLink]="['/intra/empleados/detalle-empleado' , rowData.clvEmpleado] "><i class="fas fa-edit" ></i></a>
+                                    <a pTooltip="Ver" tooltipPosition="top" class="pointer" [routerLink]="['/intra/empleados/vista-empleado' , rowData.clvEmpleado] "><i class="fas fa-eye" ></i></a>
+                                    <a pTooltip="Desactivar" tooltipPosition="top" class="pointer" *ngIf="rowData.activo" style="background: none !important;" (click)="cambiarEstado(false,rowData.clvEmpledo,rowData)"><i class="fas fa-times-circle"></i></a>
+                                    <a pTooltip="Activar" tooltipPosition="top" class="pointer" *ngIf="!rowData.activo" style="background: none !important;" (click)="cambiarEstado(true,rowData.clvEmpledo,rowData)"><i class="fas fa-check-circle"></i></a>
+                                    <a pTooltip="Datos Empleado" tooltipPosition="top" class="pointer" style="background: none !important;" [routerLink]="['/intra/datos-empleado/detalle-empleado/' , rowData.clvEmpleado] "><i class="fas fa-user"></i></a>
+    
+                                </td> -->
+                </tr>
+            </ng-template>
+        </p-table>
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+<p-dialog header="Salud" [(visible)]="displaySalud" [modal]="true" [responsive]="true" [maximizable]="true">
+
+
+
+
+    <p-footer>
+        <!-- <button type="button" pButton icon="pi pi-check" (click)="displaySalud=false" label="Yes"></button> -->
+        <button type="button" pButton icon="pi pi-close" (click)="displaySalud=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Legal" [(visible)]="displayLegal" [modal]="true" [responsive]="true" [maximizable]="true">
+    <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life
+        the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.</p>
+    <p-footer>
+        <!-- <button type="button" pButton icon="pi pi-check" (click)="displaySalud=false" label="Yes"></button> -->
+        <button type="button" pButton icon="pi pi-close" (click)="displayLegal=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+<p-dialog header="Domicilio" [(visible)]="displayDomicilio" [modal]="true" [responsive]="true" [maximizable]="true">
+    <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life
+        the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.</p>
+    <p-footer>
+        <!-- <button type="button" pButton icon="pi pi-check" (click)="displaySalud=false" label="Yes"></button> -->
+        <button type="button" pButton icon="pi pi-close" (click)="displayDomicilio=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+<p-dialog header="Familia" [(visible)]="displayFamilia" [modal]="true" [responsive]="true" [maximizable]="true">
+    <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life
+        the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.</p>
+    <p-footer>
+        <!-- <button type="button" pButton icon="pi pi-check" (click)="displaySalud=false" label="Yes"></button> -->
+        <button type="button" pButton icon="pi pi-close" (click)="displayFamilia=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+
+
+
+
+
+<!-- <p-dialog header="Datos Usuario" [(visible)]="dtUs" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+        <form #usuarioForm="ngForm" (ngSubmit)="updateUsuario(usuarioForm)" class="contactForm title" style="background: none !important">
+            <div class="form-group">
+                <label for="clvEmpleado">Clave Empleado</label>
+                <input type="text" class="form-control" name="clvEmpleado" id="clvEmpleado" #clvEmpleado="ngModel" [(ngModel)]="dtsUsuario.clvEmpleado" required/>
+                <br>
+                <p-message *ngIf="clvEmpleado.touched && !clvEmpleado.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+            </div>
+            <div class="form-group">
+                <label for="correoEmpleado">Correo</label>
+                <input type="email" class="form-control" name="correoEmpleado" id="correoEmpleado" #correoEmpleado="ngModel" [(ngModel)]="dtsUsuario.correoEmpleado" required/>
+                <br>
+                <p-message *ngIf="correoEmpleado.touched && !correoEmpleado.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="text" class="form-control" name="password" id="password" #password="ngModel" [(ngModel)]="dtsUsuario.password" required/>
+                <br>
+                <p-message *ngIf="password.touched && !password.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+            </div>
+    
+            <div class="col-xs-12">
+                <a class="btn btn-primary" (click)="updateUsuario(usuarioForm)">Enviar</a>
+            </div>
+    
+        </form>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-check" (click)="dtUs=false" label="Yes"></button>
+            <button type="button" pButton icon="pi pi-close" (click)="dtUs=false" label="No" class="ui-button-secondary"></button>
+        </p-footer>
+    </p-dialog> -->

@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;" *ngIf="rol">
+
+    </div>
+    <p *ngIf="!rol" class="text-center" style="margin-top: 100px !important">
+        <p-progressSpinner></p-progressSpinner>
+    </p>
+</div>

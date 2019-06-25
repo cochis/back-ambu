@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <H1>Registrar empleado</H1>
+        <p-messages [(value)]="msgs"></p-messages>
+        <form #createForm="ngForm" class="contactForm title" style="background: none !important" *ngIf="datosEmpleado">
+            <div class="form-group">
+                <label for="nombre">Nombre(s)</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresa el nombre del empleado" #nombre="ngModel" [(ngModel)]="datosEmpleado.nombre" required/>
+                <br>
+                <p-message *ngIf="nombre.touched && !nombre.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+
+            </div>
+
+            <!-- {{confirmacion.valid}} {{confirmacion}}
+          <div class="form-group" *ngIf="!confirmacionValid">
+              <label for="confirmacion">confirmacion</label>
+              <input type="password" class="form-control" name="confirmacion" id="confirmacion" #confirmacion="ngModel" [(ngModel)]="confirmacion.confirmacion" />
+              <br>
+              <p-message *ngIf="confirmacion.touched && !confirmacion.valid" severity="error" text="El  campo de usuario no es valido"></p-message>
+
+          </div> -->
+
+        </form>
+        <p *ngIf="!datosEmpleado" class="text-center" style="margin-top: 100px !important">
+            <p-progressSpinner></p-progressSpinner>
+        </p>
+    </div>
+
+</div>

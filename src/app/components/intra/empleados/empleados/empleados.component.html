@@ -1,0 +1,134 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: 0px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-bottom: -90px !important;" *ngIf="empleados">
+        <H1>Empleados</H1>
+
+
+        <p-table #dt [columns]="cols" [value]="empleados" selectionMode="multiple" [(selection)]="selectedEmpleados" [paginator]="true" [rows]="100">
+            <ng-template pTemplate="caption">
+                <!-- <div style="text-align: right">
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" placeholder="Busqueda" (input)="dt.filterGlobal($event.target.value, 'empleados')" style="width:auto">
+                </div> -->
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar todos" (click)="dt.exportCSV()" style="float:left"></button>
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar seleccion" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Clave empleado</th>
+                    <!-- <th>Usuario</th> -->
+                    <th>Rol</th>
+                    <th>Fecha de ingreso</th>
+                    <th>Fecha de salida</th>
+                    <th>Ultima actualizacion</th>
+                    <th>Ultima modificacion</th>
+                    <th>Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td>
+                        {{rowData.nombre}}
+                    </td>
+                    <td>
+                        {{rowData.apellidoPaterno}}
+                    </td>
+                    <td>
+                        {{rowData.apellidoMaterno}}
+                    </td>
+                    <td>
+                        <b style="color:green !important ; background: none !important;" *ngIf="rowData.activo">{{rowData.clvEmpleado}}</b>
+                        <b style="color:red !important ;background: none !important;" *ngIf="!rowData.activo"> {{rowData.clvEmpleado}}</b>
+
+
+
+                    </td>
+                    <!-- <td>
+                        <button class="btn-usuario" (click)="datosUsuario(rowData)"> Datos usuario</button>
+                    </td> -->
+                    <td>
+                        {{rowData.rolEmpleado}}
+                    </td>
+                    <td>
+                        {{rowData.fechaCreacion | date }}
+                    </td>
+                    <td>
+                        {{rowData.fechaSalida | date }}
+                    </td>
+                    <td>
+                        {{rowData.ultimaActualizacion | date }}
+                    </td>
+                    <td>
+                        {{rowData.ultimaModificacion}}
+                    </td>
+                    <td>
+                        <a pTooltip="Editar" tooltipPosition="top" class="pointer editar" [routerLink]="['/intra/empleados/detalle-empleado' , rowData.clvEmpleado] "><i class="fas fa-edit" ></i></a>
+                        <a pTooltip="Ver" tooltipPosition="top" class="pointer visualizar" [routerLink]="['/intra/empleados/vista-empleado' , rowData.clvEmpleado] "><i class="fas fa-eye" ></i></a>
+                        <a pTooltip="Desactivar" tooltipPosition="top" class="pointer activado" *ngIf="rowData.activo" style="background: none !important;" (click)="desactivar(false,rowData.clvEmpleado,rowData)"><i class="fas fa-times-circle"></i></a>
+                        <a pTooltip="Activar" tooltipPosition="top" class="pointer desactivado" *ngIf="!rowData.activo" style="background: none !important;" (click)="desactivar(true,rowData.clvEmpleado,rowData)"><i class="fas fa-check-circle"></i></a>
+                        <!-- <a pTooltip="Datos Empleado" tooltipPosition="top" class="pointer" style="background: none !important;" [routerLink]="['/intra/datos-empleado/detalle-empleado/' , rowData.clvEmpleado] "><i class="fas fa-user"></i></a> -->
+
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+
+
+
+    </div>
+
+    <p *ngIf="!empleados" class="text-center" style="margin-top: 100px !important">
+        <p-progressSpinner></p-progressSpinner>
+    </p>
+
+</div>
+<p-dialog header="Datos Usuario" [(visible)]="dtUs" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <form #usuarioForm="ngForm" (ngSubmit)="updateUsuario(usuarioForm)" class="contactForm title" style="background: none !important">
+        <div class="form-group">
+            <label for="clvEmpleado">Clave Empleado</label>
+            <input type="text" class="form-control" name="clvEmpleado" id="clvEmpleado" #clvEmpleado="ngModel" [(ngModel)]="dtsUsuario.clvEmpleado" required/>
+            <br>
+            <p-message *ngIf="clvEmpleado.touched && !clvEmpleado.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+        </div>
+        <div class="form-group">
+            <label for="correoEmpleado">Correo</label>
+            <input type="email" class="form-control" name="correoEmpleado" id="correoEmpleado" #correoEmpleado="ngModel" [(ngModel)]="dtsUsuario.correoEmpleado" required/>
+            <br>
+            <p-message *ngIf="correoEmpleado.touched && !correoEmpleado.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="text" class="form-control" name="password" id="password" #password="ngModel" [(ngModel)]="dtsUsuario.password" required/>
+            <br>
+            <p-message *ngIf="password.touched && !password.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+        </div>
+
+        <div class="col-xs-12">
+            <a class="btn btn-primary" (click)="updateUsuario(usuarioForm)">Enviar</a>
+        </div>
+
+    </form>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="dtUs=false" label="Yes"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="dtUs=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>|
+
+
+
+
+<p-dialog header="Actualizar" [(visible)]="desAct" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <p>¿Desea cambiar su estado?</p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="cambiarEstado(cambio)" label="Actualizar"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="desAct=false" label="Salir" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>

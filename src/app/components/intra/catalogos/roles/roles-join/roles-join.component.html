@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <H1>Registrar Rol</H1>
+        <p-messages [(value)]="msgs"></p-messages>
+        <form #createForm="ngForm" class="contactForm title" style="background: none !important" *ngIf="rol">
+            <div class="form-group">
+                <label for="nombre">Nombre(s)</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresa el nombre del rol" #nombre="ngModel" [(ngModel)]="rol.nombre" required/>
+                <br>
+                <p-message *ngIf="nombre.touched && !nombre.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="nombre">clvRol</label>
+                <input type="text" class="form-control" name="clvRol" id="clvRol" placeholder="Ingresa el nombre del rol" #clvRol="ngModel" [(ngModel)]="rol.clvRol" required/>
+                <br>
+                <p-message *ngIf="clvRol.touched && !clvRol.valid" severity="error" text="El  campo de clave de rol no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="tipo">tipo</label>
+                <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Ingresa el tipo del rol" #tipo="ngModel" [(ngModel)]="rol.tipo" required/>
+                <br>
+                <p-message *ngIf="clvRol.touched && !clvRol.valid" severity="error" text="El  campo de clave de rol no es valido"></p-message>
+
+            </div>
+
+
+
+            <div class="col-xs-12">
+                <button class="btn btn-primary" (click)="onSubmit(createForm)" [disabled]="!createForm.valid">Enviar</button>
+                <a class="btn btn-danger">Salir</a>
+            </div>
+        </form>
+        <p *ngIf="!rol" class="text-center" style="margin-top: 100px !important">
+            <p-progressSpinner></p-progressSpinner>
+        </p>
+    </div>
+
+</div>

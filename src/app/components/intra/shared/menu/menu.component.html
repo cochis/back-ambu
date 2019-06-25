@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-12 menuInicial">
+        <label class="menuInit "><input type="checkbox" id="controlInterno"  class="pi pi-pw pi-cog" value="first_checkbox" routerLinkActive="active"> Control interno</label>
+        <ul id="controlInterno">
+            <li id="empleados">
+                <a class="sub-menu1 fa fa-user "><label class="pointer"><input type="checkbox" id="empleados"   value="first_checkbox" routerLinkActive="active"   >Empleado</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/empleados']" *ngIf="permisos?.administrativo?.empleados?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/empleados/registrar']" *ngIf="permisos?.administrativo?.empleados?.create">Registrar</li>
+                </ul>
+            </li>
+            <!-- <li id="datosEmpleados">
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="datosEmpleados"   value="first_checkbox" routerLinkActive="active"> Datos Empleados</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/datos-empleado']" *ngIf="permisos?.administrativo?.datosEmpleados?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/datos-empleado/registrar']" *ngIf="permisos?.administrativo?.datosEmpleados?.create">Registrar</li>
+                </ul>
+            </li> -->
+            <li id="ambulancias">
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="ambulancias"   value="first_checkbox" routerLinkActive="active"> Ambulancias</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/ambulancias']" *ngIf="permisos?.administrativo?.ambulancias?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/ambulancias/registrar']" *ngIf="permisos?.administrativo?.ambulancias?.create">Registrar</li>
+                </ul>
+            </li>
+            <li id="sitios">
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="sitios"   value="first_checkbox" routerLinkActive="active"> Sitios</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.administrativo?.sitios?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.administrativo?.sitios?.create">Registrar</li>
+                </ul>
+            </li>
+            <li id="localidades">
+                <a class="pointe sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="localidades"   value="first_checkbox" routerLinkActive="active"> Localidades</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.administrativo?.localidades?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.administrativo?.localidades?.create">Registrar</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 menuInicial">
+        <label class="menuInit "><input type="checkbox" id="controlOperativo"  class="pi pi-pw pi-cog" value="first_checkbox" routerLinkActive="active"> Control operativo</label>
+        <ul id="controlOperativo">
+            <li id="registros">
+                <a class="sub-menu1 fa fa-user "><label class="pointer"><input type="checkbox" id="registros"   value="first_checkbox" routerLinkActive="active"  >Registros</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/registros']" *ngIf="permisos?.administrativo?.ambulancias?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/registros/registrar']" *ngIf="permisos?.administrativo?.ambulancias?.create"> Registrar</li>
+                </ul>
+            </li>
+            <li id="inventarios">
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="inventarios"   value="first_checkbox" routerLinkActive="active" [routerLink]="['/intra/home']"> Inventarios</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.operativo?.inventarios?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.operativo?.inventarios?.create">Registrar</li>
+                </ul>
+            </li>
+            <li id="reportesAmbulancias">
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="reportesAmbulancias"   value="first_checkbox" routerLinkActive="active" [routerLink]="['/intra/home']"> Reportes de Ambulancias</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.operativo?.reportesAmbulancias?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.operativo?.reportesAmbulancias?.create">Registrar</li>
+                </ul>
+            </li>
+            <li id="registroPacientes">
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="registroPacientes"   value="first_checkbox" routerLinkActive="active" [routerLink]="['/intra/home']"> Registro pacientes</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.operativo?.registroPacientes?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.operativo?.registroPacientes?.create">Registrar</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 menuInicial">
+        <label class="menuInit "><input type="checkbox" id="controlInterno"  class="pi pi-pw pi-cog" value="first_checkbox" routerLinkActive="active"> Clientes o Membresias</label>
+        <ul id="controlInterno">
+            <li id="clientes">
+                <a class="sub-menu1 fa fa-user "><label class="pointer"><input type="checkbox" id="clientes"   value="first_checkbox" routerLinkActive="active" [routerLink]="['/intra/home']" > Clientes</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.clientesMembresias?.clientes?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.clientesMembresias?.clientes?.create">Registrar</li>
+                </ul>
+            </li>
+            <li id="membresias">
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="membresias"   value="first_checkbox" routerLinkActive="active" [routerLink]="['/intra/home']"> Membresias</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.clientesMembresias?.membresias?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/home']" *ngIf="permisos?.clientesMembresias?.membresias?.create">Registrar</li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 menuInicial">
+
+        <label class="menuInit "><input type="checkbox" id="catalogos"  class="pi pi-pw pi-cog" value="first_checkbox" routerLinkActive="active"> Catalogos</label>
+        <ul id="catalogos">
+            <li id="roles">
+                <a class="sub-menu1 fa fa-user "><label class="pointer"><input type="checkbox" id="roles"   value="first_checkbox" routerLinkActive="active"> Roles</label></a>
+                <ul>
+
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/catalogos/roles']" *ngIf="permisos?.administrativo?.catalogos?.roles?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/catalogos/roles/registrar']" *ngIf="permisos?.administrativo?.catalogos?.roles?.create">Registrar</li>
+                </ul>
+            </li>
+            <li id="estadoCivil">
+
+                <a class=" sub-menu1 fa fa-user"><label class="pointer"><input type="checkbox" id="estadoCivil"   value="first_checkbox" routerLinkActive="active" *ngIf="" > Estado civil</label></a>
+                <ul>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/catalogos/estado-civil']" *ngIf="permisos?.administrativo?.catalogos?.estadoCivil?.read">Mostrar</li>
+                    <li class=" sub-menu2 fa fa-user" [routerLink]="['/intra/catalogos/estado-civil/registrar']" *ngIf="permisos?.administrativo?.catalogos?.estadoCivil?.create">Registrar</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>

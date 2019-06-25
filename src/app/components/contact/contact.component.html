@@ -1,0 +1,79 @@
+<div class="jumbotron" style="border-radius: 20px;">
+    <div class="row">
+        <div class="col-12 .col-lg-4 text-center">
+            <img src="assets/img/logo.png" alt="">
+
+        </div>
+        <div class="col-12 .col-lg-4">
+            <h1 class="display-4 text-center">Contacto</h1>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <div>
+
+        <h2>Llena el formulario</h2>
+        <p-messages [(value)]="msgs"></p-messages>
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contactForm title center">
+
+            <div class="row center" style=" align-content: center;justify-content: center; ">
+                <div class="form-group  center text-center col-lg-8 col-md-12 col-sm-12">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="contacto.nombre" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required/>
+                    <p-message *ngIf="nombre.touched && !nombre.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+                </div>
+            </div>
+            <div class="row center" style=" align-content: center;justify-content: center; ">
+
+                <div class="form-group  center text-center col-lg-4 col-md-12col-sm-12">
+                    <label for="correo">Correo Electronico</label>
+                    <input type="email" name="correo" #correo="ngModel" [(ngModel)]="contacto.correo" class="form-control" id="correo" placeholder="Ingresa tu correo" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required/>
+                    <br>
+                    <p-message *ngIf="correo.touched && !correo.valid" severity="error" text="El  campo de correo no es valido"></p-message>
+
+                </div>
+                <div class="form-group  center text-center col-lg-4 col-md-12 col-sm-12">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="contacto.telefono" class="form-control" id="telefono" placeholder="Ingresa tu telefono" required/>
+                    <br>
+                    <p-message *ngIf="telefono.touched && !telefono.valid" severity="error" text="El  campo de telefono no es valido"></p-message>
+
+                </div>
+            </div>
+            <div class="row center" style=" align-content: center;justify-content: center; ">
+                <div class="form-group  center text-center col-lg-8 col-md-6 col-sm-12">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="contacto.mensaje" class="form-control" id="mensaje" placeholder="Ingresa tu mensaje" rows="8" cols="100" style="resize: none;" required>
+                      </textarea>
+
+                    <br>
+                    <p-message *ngIf="telefono.touched && !telefono.valid" severity="error" text="El  campo de telefono no es valido"></p-message>
+
+                </div>
+            </div>
+
+
+            <button type="submit" id="submit" name="submit" pButton label="Enviar" class="btn btn-primary" [disabled]="!contactForm.form.valid" style="background: rgba(244, 81, 30, .8) !important;"></button>
+
+        </form>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h3> Urgencias</h3>
+                <h4>(55) 5687 0407</h4>
+                <h4>(55) 5682 4552</h4>
+                <h3>Oficina</h3>
+                <h4>(55) 5682 4040</h4>
+                <h4>(55) 5682 4050</h4>
+                <h3>Correo electrónico</h3>
+                <h4> ahumana@prodigy.net.mx</h4>
+                <h4></h4>
+            </div>
+            <div class="col-lg-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.5577533255223!2d-99.179819284684!3d19.388292747119028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff776a3c8859%3A0xfb316e1145028794!2sAmbulancias+Humana!5e0!3m2!1ses-419!2smx!4v1559851312071!5m2!1ses-419!2smx"
+                    width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </div>

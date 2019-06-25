@@ -1,0 +1,489 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <h3>Permisos</h3>
+        <p-accordion [multiple]="true" *ngIf="permisos">
+            <p-accordionTab header="Administrativo">
+                <div class="row">
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Empleados</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.empleados.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.empleados.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.empleados.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.empleados.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Datos de empleados</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.datosEmpleados.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.datosEmpleados.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.datosEmpleados.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.datosEmpleados.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Sitios</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.sitios.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.sitios.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.sitios.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.sitios.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Localidades</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.localidades.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.localidades.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.localidades.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.localidades.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Ambulancias</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.ambulancias.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.ambulancias.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.ambulancias.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.administrativo.ambulancias.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </p-accordionTab>
+            <p-accordionTab header="Operativo">
+                <div class="row">
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Inventarios</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.inventarios.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.inventarios.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.inventarios.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.inventarios.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Registros pacientes</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.registroPacientes.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.registroPacientes.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.registroPacientes.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.registroPacientes.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Reportes ambulancias</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.reportesAmbulancias.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.reportesAmbulancias.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.reportesAmbulancias.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.reportesAmbulancias.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Servicios</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.servicios.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.servicios.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.servicios.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.operativo.servicios.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </p-accordionTab>
+            <p-accordionTab header="Clientes y Membresias">
+                <div class="row">
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Clientes</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.clientes.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.clientes.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.clientes.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.clientes.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Membresias</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.membresias.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.membresias.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.membresias.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.clientesMembresias.membresias.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </p-accordionTab>
+            <p-accordionTab header="Catalogos">
+                <div class="row">
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Roles</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.roles.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    {{permisos.catalogos.roles.read}}
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.roles.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.roles.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.roles.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-3">
+                        <table>
+                            <caption>
+                                <h3>Estado Civil</h3>
+                            </caption>
+                            <tr>
+                                <th>Registar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.estadoCivil.create" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Lectura</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.estadoCivil.read" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Actualizar</th>
+                                <td>{{permisos.catalogos.estadoCivil.update}}
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.estadoCivil.update" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Borrar</th>
+                                <td>
+                                    <p-checkbox [(ngModel)]="permisos.catalogos.estadoCivil.delete" binary="true"></p-checkbox>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </p-accordionTab>
+
+
+            <button (click)="onSubmit(permisos)">
+                    Enviar
+                </button>
+        </p-accordion>
+        <p *ngIf="!permisos" class="text-center" style="margin-top: 100px !important">
+            <p-progressSpinner></p-progressSpinner>
+        </p>
+
+
+    </div>
+</div>

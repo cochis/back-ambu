@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-bottom: -90px !important;" *ngIf="registros">
+        <H1>Registros</H1>
+
+
+        <p-table #dt [columns]="cols" [value]="registros" selectionMode="multiple" [(selection)]="selectedRegistros" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="caption">
+                <div style="text-align: right">
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" placeholder="Busqueda" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                </div>
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar todos" (click)="dt.exportCSV()" style="float:left"></button>
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar seleccion" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th>Folio</th>
+                    <th>Fecha</th>
+                    <th>Hora de llamada</th>
+                    <th>Cliente</th>
+                    <th>Paciente</th>
+                    <th>Membresia</th>
+                    <th>Factura</th>
+                    <th>Folio Paramedico</th>
+                    <th>Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td>
+                        {{rowData.numeroFolio | number:'5.0-0' }}
+                    </td>
+                    <td>
+                        {{rowData.fecha | date}}
+                    </td>
+                    <td>
+                        {{rowData.llamada }}
+                    </td>
+                    <td>
+                        {{rowData.clvCliente}}
+
+
+
+                    </td>
+                    <td>
+                        {{rowData.nombrePaciente}}
+                    </td>
+                    <td>
+                        {{rowData.clvMembresia}}
+                    </td>
+                    <td>
+                        {{rowData.folioFactura}}
+                    </td>
+                    <td>
+                        {{rowData.folioPm}}
+                    </td>
+
+                    <td>
+                        <a pTooltip="Editar" tooltipPosition="top" class="pointer editar" [routerLink]="['/intra/registros/detalle-registro' , rowData.clvRegistro] "><i class="fas fa-edit" ></i></a>
+                        <a pTooltip="Ver" tooltipPosition="top" class="pointer visualizar" [routerLink]="['/intra/registros/vista-registro' , rowData.clvRegistro] "><i class="fas fa-eye" ></i></a>
+                        <a pTooltip="Desactivar" tooltipPosition="top" class="pointer activado" *ngIf="rowData.activo" style="color:red !important; background: none !important;" (click)="desactivar(false,rowData.clvRegistro,rowData)"><i class="fas fa-times-circle"></i></a>
+                        <a pTooltip="Activar" tooltipPosition="top" class="pointer desactivado" *ngIf="!rowData.activo" style="color:green !important; background: none !important;" (click)="desactivar(true,rowData.clvRegistro,rowData)"><i class="fas fa-check-circle"></i></a>
+
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+
+
+
+    </div>
+
+    <p *ngIf="!registros" class="text-center" style="margin-top: 100px !important">
+        <p-progressSpinner></p-progressSpinner>
+    </p>
+
+</div>
+
+<p-dialog header="Actualizar" [(visible)]="desAct" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <p>¿Desea cambiar su estado?</p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="cambiarEstado(cambio)" label="Actualizar"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="desAct=false" label="Salir" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>|

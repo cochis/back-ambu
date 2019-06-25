@@ -1,0 +1,312 @@
+<div class="container-fluid">
+    <div class="col-3" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-9 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <H1>Detalle de datos del empleado</H1>
+
+        <form #updateForm="ngForm" (ngSubmit)="agregarDatos(updateForm)" class="contactForm title" style="background: none !important" *ngIf="datosEmpleado">
+            <div class="form-group">
+                <label for="nombreCompleto">Nombre completo</label>
+                <input type="text" class="form-control" name="nombreCompleto" id="nombreCompleto" placeholder="Ingresa el nombre del empleado" #nombreCompleto="ngModel" [(ngModel)]="datosEmpleado.nombreCompleto" readonly required/>
+                <br>
+                <p-message *ngIf="nombreCompleto.touched && !nombreCompleto.valid" severity="error" text="El  campo de nombre esinvalido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="genero">Genero</label>
+                <select class="form-control" name="genero" id="genero" #genero="ngModel" class="form-control" [(ngModel)]="datosEmpleado.genero" required>
+                        <option value="" selected ></option>        
+                        <option value="femenino" selected >Femenino</option>
+                        <option value="masculino">Masculino</option>
+                    </select>
+                <br>
+                <p-message *ngIf="genero.touched && !genero.valid" severity="error" text="El  campo de genero es invalido"></p-message>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="clvEmpleado">Clave de empleado</label>
+                    <input type="text" class="form-control" name="clvEmpleado" id="clvEmpleado" placeholder="Ingresa la clave de empleado" #clvEmpleado="ngModel" [(ngModel)]="datosEmpleado.clvEmpleado" maxlength="8" minlength="8" readonly required/>
+                    <br>
+                    <p-message *ngIf="clvEmpleado.touched && !clvEmpleado.valid" severity="error" text="El  campo de clave de empledo es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="fechaIngreso">Fecha de ingreso</label>
+                    <input type="text" class="form-control" name="fechaIngreso" id="fechaIngreso" placeholder="Ingresa fecha de ingreso" #fechaIngreso="ngModel" [(ngModel)]="datosEmpleado.fechaIngreso" readonly required/>
+                    <br>
+                    <p-message *ngIf="fechaIngreso.touched && !fechaIngreso.valid" severity="error" text="El  campo de clave de empledo es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="clinicaImss">Clinica IMSS</label>
+                    <input type="text" class="form-control" name="clinicaImss" id="clinicaImss" placeholder="Ingresa clinica IMSS del empleado" #clinicaImss="ngModel" [(ngModel)]="datosEmpleado.clinicaImss" required/>
+                    <br>
+                    <p-message *ngIf="clinicaImss.touched && !clinicaImss.valid" severity="error" text="El  campo de la clinica imss es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="rfc">RFC</label>
+                    <input type="text" class="form-control" name="rfc" id="rfc" placeholder="Ingresa el RFC del empleado" #rfc="ngModel" [(ngModel)]="datosEmpleado.rfc" maxlength="13" minlength="13" style="text-transform: uppercase !important;" required/>
+                    <br>
+                    <p-message *ngIf="rfc.touched && !rfc.valid" severity="error" text="El  campo de RFC es invalido"></p-message>
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="puesto">Puesto</label>
+                    <input type="text" class="form-control" name="puesto" id="puesto" placeholder="Ingresa el puesto del empleado" #puesto="ngModel" style="text-transform: capitalize ;" [(ngModel)]="datosEmpleado.puesto" required/>
+                    <br>
+                    <p-message *ngIf="puesto.touched && !puesto.valid" severity="error" text="El  campo del puesto es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="sueldo">Sueldo</label>
+                    <input type="number" class="form-control" name="sueldo" id="sueldo" placeholder="Ingresa el sueldo del empleado" #sueldo="ngModel" [(ngModel)]="datosEmpleado.sueldo" required/>
+                    <br>
+                    <p-message *ngIf="sueldo.touched && !sueldo.valid" severity="error" text="El  campo del sueldo es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="curp">Curp</label>
+                    <input type="text" class="form-control" name="curp" id="curp" placeholder="Ingresa el curp del empleado" #curp="ngModel" style="text-transform: capitalize ;" [(ngModel)]="datosEmpleado.curp" maxlength="18" minlength="18" required/>
+                    <br>
+                    <p-message *ngIf="curp.touched && !curp.valid" severity="error" text="El  campo del curp es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="nss">Numero de seguro social</label>
+                    <input type="text" class="form-control" name="nss" id="nss" placeholder="Ingresa el NSS del empleado" size="11" #nss="ngModel" [(ngModel)]="datosEmpleado.nss" maxlength="11" minlength="11" pattern="[0-9]+" required/>
+                    <br>
+                    <p-message *ngIf="nss.touched && !nss.valid" severity="error" text="El  campo del numero de seguro social es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="telefonoCasa">Telefono de casa</label>
+                    <input type="text" class="form-control" name="telefonoCasa" id="telefonoCasa" size="10" placeholder="Ingresa el numero de telefono de casa del empleado" #telefonoCasa="ngModel" maxlength="10" minlength="10" [(ngModel)]="datosEmpleado.telefonoCasa" pattern="[0-9]+"
+                    />
+                    <br>
+                    <p-message *ngIf="telefonoCasa.touched && !telefonoCasa.valid" severity="error" text="El  campo del numero de telefono de casa es  invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="telefonoMovil">Telefono de celular</label>
+                    <input type="text" class="form-control" name="telefonoMovil" id="telefonoMovil" size="10" placeholder="Ingresa el numero de telefono movil del empleado" #telefonoMovil="ngModel" maxlength="10" minlength="10" [(ngModel)]="datosEmpleado.telefonoMovil" pattern="[0-9]+"
+                    />
+                    <br>
+                    <p-message *ngIf="telefonoMovil.touched && !telefonoMovil.valid" severity="error" text="El  campo del numero de telefono celular es  invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="tipoSangre">Tipo de sangre</label>
+                    <input type="text" class="form-control" name="tipoSangre" id="tipoSangre" placeholder="Ingresa el tipo de sangre del empleado" #tipoSangre="ngModel" style="text-transform: uppercase !important ;" [(ngModel)]="datosEmpleado.tipoSangre" required/>
+                    <br>
+                    <p-message *ngIf="tipoSangre.touched && !tipoSangre.valid" severity="error" text="El  campo del el tipo de sangre es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-6">
+                    <label for="estadoCivil">Estado civil</label>
+                    <input type="text" class="form-control" name="estadoCivil" id="estadoCivil" placeholder="Ingresa el estado civil del empleado" #estadoCivil="ngModel" style="text-transform: capitalize ;" [(ngModel)]="datosEmpleado.estadoCivil" required/>
+                    <br>
+                    <p-message *ngIf="estadoCivil.touched && !estadoCivil.valid" severity="error" text="El  campo del el estado civil es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-12">
+                    <label for="domicilio">Domicilio</label>
+                    <input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="Ingresa el domicilio del empleado" #domicilio="ngModel" [(ngModel)]="datosEmpleado.domicilio" required/>
+                    <br>
+                    <p-message *ngIf="domicilio.touched && !domicilio.valid" severity="error" text="El  campo de domicilio es invalido"></p-message>
+
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="alergias">Alergias</label>
+                    <input type="text" class="form-control" name="alergias" id="alergias" placeholder="Ingresa las alergias del empleado" #alergias="ngModel" [(ngModel)]="datosEmpleado.alergias" required/>
+                    <br>
+                    <p-message *ngIf="alergias.touched && !alergias.valid" severity="error" text="El  campo de alergias es invalido"></p-message>
+
+                </div>
+
+
+
+
+                <!--
+                <div class="col-12" *ngIf="!numero">
+                    <h1>hijos</h1>
+                   
+                </div> -->
+                <div class="form-group col-12">
+                    <label for="horario">Horario</label>
+                    <table>
+
+                        <tr>
+                            <th style="width: 90px;"></th>
+                            <th style="width: 90px;">Lunes</th>
+                            <th style="width: 90px;">Martes</th>
+                            <th style="width: 90px;">Miercoles</th>
+                            <th style="width: 90px;">Jueves</th>
+                            <th style="width: 90px;">Viernes</th>
+                            <th style="width: 90px;">Sabado</th>
+                            <th style="width: 90px;">Domingo</th>
+
+                        </tr>
+                        <tr>
+                            <td>Entrada</td>
+                            <td><input type="text" name="entrada1" id="entrada1" #entrada1="ngModel" style="max-width: 50px;" [(ngModel)]="horario[0].entrada"></td>
+                            <td><input type="text" name="entrada2" id="entrada2" #entrada2="ngModel" style="max-width: 50px;" [(ngModel)]="horario[1].entrada"></td>
+                            <td><input type="text" name="entrada3" id="entrada3" #entrada3="ngModel" style="max-width: 50px;" [(ngModel)]="horario[2].entrada"></td>
+                            <td><input type="text" name="entrada4" id="entrada4" #entrada4="ngModel" style="max-width: 50px;" [(ngModel)]="horario[3].entrada"></td>
+                            <td><input type="text" name="entrada5" id="entrada5" #entrada5="ngModel" style="max-width: 50px;" [(ngModel)]="horario[4].entrada"></td>
+                            <td><input type="text" name="entrada6" id="entrada6" #entrada6="ngModel" style="max-width: 50px;" [(ngModel)]="horario[5].entrada"></td>
+                            <td><input type="text" name="entrada7" id="entrada7" #entrada7="ngModel" style="max-width: 50px;" [(ngModel)]="horario[6].entrada"></td>
+
+
+
+                        </tr>
+                        <tr>
+                            <td>Salida</td>
+                            <td><input type="text" name="salida1" id="salida1" #salida1="ngModel" style="max-width: 50px;" [(ngModel)]="horario[0].salida"></td>
+                            <td><input type="text" name="salida2" id="salida2" #salida2="ngModel" style="max-width: 50px;" [(ngModel)]="horario[1].salida"></td>
+                            <td><input type="text" name="salida3" id="salida3" #salida3="ngModel" style="max-width: 50px;" [(ngModel)]="horario[2].salida"></td>
+                            <td><input type="text" name="salida4" id="salida4" #salida4="ngModel" style="max-width: 50px;" [(ngModel)]="horario[3].salida"></td>
+                            <td><input type="text" name="salida5" id="salida5" #salida5="ngModel" style="max-width: 50px;" [(ngModel)]="horario[4].salida"></td>
+                            <td><input type="text" name="salida6" id="salida6" #salida6="ngModel" style="max-width: 50px;" [(ngModel)]="horario[5].salida"></td>
+                            <td><input type="text" name="salida7" id="salida7" #salida7="ngModel" style="max-width: 50px;" [(ngModel)]="horario[6].salida"></td>
+
+                        </tr>
+
+                    </table>
+                    2
+
+
+                    <br>
+                    <p-message *ngIf="horario[1].touched && !horario[1].valid" severity="error" text="El  campo del horario es invalido"></p-message>
+
+                </div>
+                <div class="form-group col-12">
+                    <label for="hijos">Hijos</label>
+                    <p-table [value]="muestraHijos" *ngIf="activateHijos">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Clave empleado</th>
+                                <th>Nombre</th>
+                                <th>Fecha de Nacimiento</th>
+                                <th>Edad</th>
+                                <th>Genero</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-hijo>
+                            <tr>
+                                <td>{{hijo.clvEmpleado}}</td>
+                                <td>{{hijo.nombre}}</td>
+                                <td>{{hijo.fechaNacimiento | date:'dd-MM-yyyy'}}</td>
+                                <td>{{hijo.edad}}</td>
+                                <td>{{hijo.genero}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                    <div class="row">
+                        <div class="col-6 text-right"> <a class="btn btn-primary" (click)="showDialog()">Agregar hijos</a></div>
+                        <div class="col-6 text-left"><a class="btn btn-danger" (click)="showDialog()">Borrar</a></div>
+
+                    </div>
+
+
+                </div>
+                <div class="form-group col-6">
+                    <label for="nombrePadre">Nombre de padre</label>
+                    <input type="text" class="form-control" name="nombrePadre" id="nombrePadre" placeholder="Ingresa el nombre de padre" #nombrePadre="ngModel" [(ngModel)]="datosEmpleado.nombrePadre" required/>
+                    <br>
+                    <p-message *ngIf="nombrePadre.touched && !nombrePadre.valid" severity="error" text="El  campo del el nombre de padreinvalido"></p-message>
+
+                </div>
+                <div class="form-group col-6">
+                    <label for="nombreMadre">Nombre de madre</label>
+                    <input type="text" class="form-control" name="nombreMadre" id="nombreMadre" placeholder="Ingresa el nombre de padre" #nombreMadre="ngModel" [(ngModel)]="datosEmpleado.nombreMadre" required/>
+                    <br>
+                    <p-message *ngIf="nombreMadre.touched && !nombreMadre.valid" severity="error" text="El  campo del el nombre de madreinvalido"></p-message>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-xs-12">
+                <!-- [disabled]="!contactForm.form.valid" Button -->
+                <!-- *ngIf="updateForm.valid" -->
+                <a class="btn btn-primary" (click)="agregarDatos(updateForm)">Enviar</a>
+                <!-- <button type="submit" id="submit" name="submit" pButton label="Enviar" class="btn btn-primary" [disabled]="!contactForm.form.valid"></button> -->
+
+            </div>
+
+
+        </form>
+
+
+
+
+        <p *ngIf="!datosEmpleado">
+            loading
+        </p>
+    </div>
+
+</div>
+
+
+<p-dialog header="Agregar Hijo" [(visible)]="display">
+    <form #updateHijo="ngForm" class="contactForm title" [style]="{width: '300px', height: '200px'}">
+        <div class="form-group col-12">
+            <div class="form-group">
+                <label for="clvEmpleado">Clave del empleado</label>
+                <input type="text" name="clvEmpleado" id="clvEmpleado" #clvEmpleado="ngModel" class="form-control" [(ngModel)]="datosEmpleado.clvEmpleado" readonly />
+                <br>
+                <p-message *ngIf="clvEmpleado.touched && !clvEmpleado.valid" severity="error" text="El  campo de nombre esinvalido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre de hijo</label>
+                <input type="text" name="nombre" id="nombre" #nombre="ngModel" class="form-control" [(ngModel)]="hijo.nombre" placeholder="Nombre" />
+                <br>
+                <p-message *ngIf="nombre.touched && !nombre.valid" severity="error" text="El  campo de nombre esinvalido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
+                <input type="date" name="fechaNacimiento" id="fechaNacimiento" #fechaNacimiento="ngModel" class="form-control" [(ngModel)]="hijo.fechaNacimiento" placeholder="Fecha de nacimiento" />
+                <br>
+                <p-message *ngIf="fechaNacimiento.touched && !fechaNacimiento.valid" severity="error" text="El  campo de fecha de nacimiento esinvalido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input type="text" name="edad" id="edad" #edad="ngModel" class="form-control" [(ngModel)]="hijo.edad" readonly placeholder="Edad" />
+                <br>
+                <p-message *ngIf="edad.touched && !edad.valid" severity="error" text="El  campo de edad esinvalido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="genero">Genero</label>
+                <select class="form-control" name="genero" id="genero" #genero="ngModel" class="form-control" [(ngModel)]="hijo.genero">
+                        <option value="femenino" selected >Femenino</option>
+                        <option value="masculino">Masculino</option>
+                </select>
+                <br>
+                <p-message *ngIf="genero.touched && !genero.valid" severity="error" text="El  campo de genero esinvalido"></p-message>
+
+            </div>
+            <div class="row">
+                <!-- <div class="col-6 text-left"><a class="btn btn-primary" (click)="agregarHijo(updateHijo)" *ngIf="updateHijo.value.nombre != '' && updateHijo.value.fechaNacimiento != '' && updateHijo.value.edad != 0 && updateHijo.value.genero != ''   ">Enviar</a></div> -->
+                <div class="col-6 text-left"><a class="btn btn-primary" (click)="agregarHijo(updateHijo)">Enviar</a></div>
+                <div class="col-6 text-right"><a class="btn btn-danger" (click)="display = false">Cancelar</a></div>
+            </div>
+
+
+        </div>
+
+    </form>
+</p-dialog>

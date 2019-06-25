@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-bottom: -90px !important;" *ngIf="roles">
+        <H1>Roles</H1>
+        <p-table #dt [columns]="cols" [value]="roles" selectionMode="multiple" [(selection)]="selectedRoles" [paginator]="true" [rows]="100">
+            <ng-template pTemplate="caption">
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar todos" (click)="dt.exportCSV()" style="float:left"></button>
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Descargar seleccion" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td>
+                        {{rowData.idRol}}
+                    </td>
+                    <td>
+                        {{rowData.nombre}}
+                    </td>
+                    <td>
+                        {{rowData.clvRol}}
+                    </td>
+                    <td>
+                        {{rowData.activo}}
+                    </td>
+                    <td>
+                        <button [routerLink]="['/intra/catalogos/roles/permisos' , rowData.clvRol] "> 
+                            Permisos
+                        </button>
+                        <!-- {{rowData.permisos}} -->
+                    </td>
+                    <td>
+                        {{rowData.tipo}}
+                    </td>
+                    <td>
+                        {{rowData.ultimaActualizacion | date}}
+                    </td>
+                    <!-- <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td> -->
+                    <td>
+                        {{permisos?.administrativo?.catalogos?.roles?.update}}
+                        <a pTooltip="Editar" tooltipPosition="top" class="pointer" [routerLink]="['/intra/catalogos/roles/detalle-rol' , rowData.clvRol] " *ngIf="permisos?.administrativo?.catalogos?.roles?.update"><i class="fas fa-edit" ></i></a>
+                        <a pTooltip="Ver" tooltipPosition="top" class="pointer" [routerLink]="['/intra/catalogos/roles/vista-rol' , rowData.clvRol] "><i class="fas fa-eye" ></i></a>
+                        <!-- <a pTooltip="Desactivar" tooltipPosition="top" class="pointer" *ngIf="rowData.activo" style="background: none !important;" (click)="cambiarEstado(false,empleado.clvEmpledo,empleado)"><i class="fas fa-times-circle"></i></a>
+                      <a pTooltip="Activar" tooltipPosition="top" class="pointer" *ngIf="!empleado.activo" style="background: none !important;" (click)="cambiarEstado(true,empleado.clvEmpledo,empleado)"><i class="fas fa-check-circle"></i></a> -->
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <p *ngIf="!roles" class="text-center" style="margin-top: 100px !important">
+        <p-progressSpinner></p-progressSpinner>
+    </p>
+</div>

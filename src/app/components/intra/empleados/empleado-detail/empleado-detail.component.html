@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <H1>Detalle empleado</H1>
+        <!-- <p *ngIf="empleado"> Hola {{empleado.nombre}} </p> -->
+
+        <form #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm)" class="contactForm title" style="background: none !important" *ngIf="empleado">
+            <div class="form-group">
+                <label for="nombre">Nombre(s)</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresa el nombre del empleado" #nombre="ngModel" [(ngModel)]="empleado.nombre" required/>
+                <br>
+                <p-message *ngIf="nombre.touched && !nombre.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="apellidoPaterno">Apellido Paterno</label>
+                <input type="text" class="form-control" name="apellidoPaterno" id="apellidoPaterno" placeholder="Ingresa el apellido paterno del empleado" #apellidoPaterno="ngModel" [(ngModel)]="empleado.apellidoPaterno" required/>
+                <br>
+                <p-message *ngIf="apellidoPaterno.touched && !apellidoPaterno.valid" severity="error" text="El  campo de apellido paterno no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="apellidoMaterno">Apellido Materno</label>
+                <input type="text" class="form-control" name="apellidoMaterno" id="apellidoMaterno" placeholder="Ingresa el apellido paterno del empleado" #apellidoMaterno="ngModel" [(ngModel)]="empleado.apellidoMaterno" required/>
+                <br>
+                <p-message *ngIf="apellidoMaterno.touched && !apellidoMaterno.valid" severity="error" text="El  campo de apellido materno no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="clvEmpleado">Clave empleado</label>
+                <input type="text" class="form-control" name="clvEmpleado" id="clvEmpleado" placeholder="Ingresa la clave de empleado" #clvEmpleado="ngModel" [(ngModel)]="empleado.clvEmpleado" readonly required/>
+                <br>
+                <p-message *ngIf="clvEmpleado.touched && !clvEmpleado.valid" severity="error" text="El  campo de apellido materno no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Ingresa el usuario de empleado" #usuario="ngModel" [(ngModel)]="empleado.usuario" readonly required/>
+                <br>
+                <p-message *ngIf="usuario.touched && !usuario.valid" severity="error" text="El  campo de usuario no es valido"></p-message>
+
+            </div>
+            <!-- <div class="form-group">
+                <label for="rolEmpleado">Rol de empleado</label>
+                <input type="text" class="form-control" name="rolEmpleado" id="rolEmpleado" placeholder="Ingresa el rol de empleado" #rolEmpleado="ngModel" [(ngModel)]="empleado.rolEmpleado" required/>
+                <br>
+                <p-message *ngIf="rolEmpleado.touched && !rolEmpleado.valid" severity="error" text="El  campo de rol de empleado no es valido"></p-message>
+
+            </div> -->
+
+            <div class="form-group">
+                <select class="form-control" name="rolEmpleado" id="rolEmpleado" #rolEmpleado="ngModel" [(ngModel)]="empleado.rolEmpleado" required>
+                <option *ngFor="let rol of roles;"  value="{{rol.clvRol}}" style="background: none !important;">{{rol.nombre}}</option>
+                
+              </select>
+            </div>
+            <div class="col-12 text-center">
+                <button type="button" class="btnAct" (click)="confirmacion()" [disabled]="!updateForm.valid" pButton icon="pi pi-info-circle" label="Actualizar"></button>
+
+                <button type="button" class="btnCan" [routerLink]="['/intra/empleados']" pButton icon="pi pi-info-circle" label="Salir"></button>
+
+            </div>
+
+        </form>
+        <p *ngIf="!empleado" class="text-center" style="margin-top: 100px !important">
+            <p-progressSpinner></p-progressSpinner>
+        </p>
+
+    </div>
+
+</div>
+<!-- <p-dialog header="Editar empleado" [(visible)]="displayEditar" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+  <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life
+      the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.</p>
+  <p-footer>
+      <button type="button" pButton icon="pi pi-check" (click)="displayEditar=false" label="Yes"></button>
+      <button type="button" pButton icon="pi pi-close" (click)="displayEditar=false" label="No" class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog> -->
+
+<p-dialog header="Actualizar" [(visible)]="actualizar" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+    <p>¿Desea actualizar el registro?</p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="onSubmit(updateForm)" label="Actualizar"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="actualizar=false" label="Salir" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>

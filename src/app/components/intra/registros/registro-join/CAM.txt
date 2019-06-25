@@ -1,0 +1,180 @@
+
+            <div class="form-group">
+
+                <label for="clvEmpleados">Emmpleados</label>
+                <input type="text" class="form-control" name="clvEmpleados" id="clvEmpleados" placeholder="Ingresa los empleados de registro" #clvEmpleados="ngModel" [(ngModel)]="registro.clvEmpleados" required/>
+                <br>
+                <p-message *ngIf="clvEmpleados.touched && !clvEmpleados.valid" severity="error" text="El  campo de empleados no es valido"></p-message>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="estado">Estado</label>
+                <input type="text" class="form-control" name="estado" id="estado" placeholder="Ingresa la clave de estado" #estado="ngModel" [(ngModel)]="registro.estado" required/>
+                <br>
+                <p-message *ngIf="estado.touched && !estado.valid" severity="error" text="El  campo de estado no es valido"></p-message>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="solicito">Solicitante</label>
+                <input type="text" class="form-control" name="solicito" id="solicito" placeholder="Ingresa la clave de registro" #solicito="ngModel" [(ngModel)]="registro.solicito" required/>
+                <br>
+                <p-message *ngIf="solicito.touched && !solicito.valid" severity="error" text="El  campo de solicitante no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+
+                <label for="odometro">Odometro</label>
+                <input type="text" class="form-control" name="odometro" id="odometro" placeholder="Ingresa la clave de registro" #odometro="ngModel" [(ngModel)]="registro.odometro" required/>
+                <br>
+                <p-message *ngIf="odometro.touched && !odometro.valid" severity="error" text="El  campo de odometro no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+
+                <label for="solicito">Solicitante</label>
+                <input type="text" class="form-control" name="solicito" id="solicito" placeholder="Ingresa la clave de registro" #solicito="ngModel" [(ngModel)]="registro.solicito" required/>
+                <br>
+                <p-message *ngIf="solicito.touched && !solicito.valid" severity="error" text="El  campo de solicitante no es valido"></p-message>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="folioPm">Folio de paramedico</label>
+                <input type="text" class="form-control" name="folioPm" id="folioPm" placeholder="Ingresa la clave de registro" #folioPm="ngModel" [(ngModel)]="registro.folioPm" required/>
+                <br>
+                <p-message *ngIf="folioPm.touched && !folioPm.valid" severity="error" text="El  campo de folio de paramedico no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+
+                <label for="personal">Personal</label>
+                <input type="text" class="form-control" name="personal" id="personal" placeholder="Ingresa el personal de registro" #personal="ngModel" [(ngModel)]="registro.personal" required/>
+                <br>
+                <p-message *ngIf="personal.touched && !personal.valid" severity="error" text="El  campo de personal no es valido"></p-message>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="rt">RT</label>
+                <input type="text" class="form-control" name="rt" id="rt" placeholder="Ingresa el rt de registro" #rt="ngModel" [(ngModel)]="registro.rt" required/>
+                <br>
+                <p-message *ngIf="rt.touched && !rt.valid" severity="error" text="El  campo de RT no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+
+                <label for="diagnostico">Diagnostico</label>
+                <input type="text" class="form-control" name="diagnostico" id="diagnostico" placeholder="Ingresa el diagnostico de registro" #diagnostico="ngModel" [(ngModel)]="registro.diagnostico" />
+                <br>
+                <p-message *ngIf="diagnostico.touched && !diagnostico.valid" severity="error" text="El  campo de diagnostico no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+
+                <label for="categoria">Categoria</label>
+                <input type="text" class="form-control" name="categoria" id="categoria" placeholder="Ingresa la categoria de registro" #categoria="ngModel" [(ngModel)]="registro.categoria" required/>
+                <br>
+                <p-message *ngIf="categoria.touched && !categoria.valid" severity="error" text="El  campo de categoria no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+
+                <label for="folioFactura">Folio de factura</label>
+                <input type="text" class="form-control" name="folioFactura" id="folioFactura" placeholder="Ingresa la folio de factura de registro" #folioFactura="ngModel" [(ngModel)]="registro.folioFactura" required/>
+                <br>
+                <p-message *ngIf="folioFactura.touched && !folioFactura.valid" severity="error" text="El  campo de folio de factura no es valido"></p-message>
+
+            </div>
+
+            <!-- AIG     Cliente -->
+            <div *ngIf="aig">
+                <!-- <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12" style="float: left !important">
+                            <div class="form-group">
+
+                                <label for="procedencia">Procedencia</label>
+                                <textarea class="form-control" rows="5" name="procedencia" id="procedencia" placeholder="Ingresa la procedencia del servicio" #procedencia="ngModel" [(ngModel)]="registro.procedencia" required></textarea>
+                                <br>
+                                <p-message *ngIf="procedencia.touched && !procedencia.valid" severity="error" text="El  campo de procedencia no es valido"></p-message>
+
+                            </div>
+                        </div>
+                        <div class="col-12" style="float: left !important">
+                            <div class="form-group">
+
+                                <label for="destino">Destino</label>
+                                <textarea class="form-control" rows="5" name="destino" id="destino" placeholder="Ingresa la destino del servicio" #destino="ngModel" [(ngModel)]="registro.destino" required></textarea>
+                                <br>
+                                <p-message *ngIf="destino.touched && !destino.valid" severity="error" text="El  campo de destino no es valido"></p-message>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+            <!-- AMA     Cliente -->
+            <div *ngIf="ama">
+
+
+            </div>
+            <!-- Atlas     Cliente -->
+            <div *ngIf="atl">
+
+
+            </div>
+            <!-- Atlas GMM     Cliente -->
+            <div *ngIf="gmm">
+
+
+            </div>
+            <!-- Banxico     Cliente -->
+            <div *ngIf="bxc">
+
+
+            </div>
+            <!-- Club america     Cliente -->
+            <div *ngIf="clb">
+
+
+            </div>
+            <!-- Hospital bite     Cliente -->
+            <div *ngIf="hbm">
+
+
+            </div>
+            <!-- menbresias     Cliente -->
+            <div *ngIf="mmb">
+
+
+            </div>
+            <!-- Multiasistencia     Cliente -->
+            <div *ngIf="mlt">
+
+
+            </div>
+            <!-- particular     Cliente -->
+            <div *ngIf="prt">
+
+
+            </div>
+            <!-- Hipodromo     Cliente -->
+            <div *ngIf="hpd">
+
+
+            </div>
+            <!-- WTC     Cliente -->
+            <div class="wtc">
+
+
+            </div>

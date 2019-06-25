@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <p-table #dt [columns]="cols" [value]="estadosCiviles" selectionMode="multiple" [(selection)]="selectedEstados" [paginator]="true" [rows]="3">
+            <ng-template pTemplate="caption">
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>
+                    <button type="button" pButton icon="fa fa-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td>
+                        {{rowData.idEstadoCivil}}
+                    </td>
+                    <td>
+                        {{rowData.nombre}}
+                    </td>
+                    <td>
+                        {{rowData.clvEstadoCivil}}
+                    </td>
+                    <td>
+                        {{rowData.activo}}
+                    </td>
+                    <td>
+                        {{rowData.tipo}}
+                    </td>
+                    <td>
+                        {{rowData.ultimaActualizacion | date}}
+                    </td>
+                    <!-- <td *ngFor="let col of columns">
+                      {{rowData[col.field]}}
+                  </td> -->
+                    <td>
+                        <a pTooltip="Editar" tooltipPosition="top" class="pointer" [routerLink]="['/intra/catalogos/estado-civil/detalle-estado-civil' , rowData.clvEstadoCivil] "><i class="fas fa-edit" ></i></a>
+                        <a pTooltip="Ver" tooltipPosition="top" class="pointer" [routerLink]="['/intra/catalogos/estado-civil/vista-estado-civil' , rowData.clvEstadoCivil] "><i class="fas fa-eye" ></i></a>
+                        <!-- <a pTooltip="Desactivar" tooltipPosition="top" class="pointer" *ngIf="rowData.activo" style="background: none !important;" (click)="cambiarEstado(false,empleado.clvEmpledo,empleado)"><i class="fas fa-times-circle"></i></a>
+                    <a pTooltip="Activar" tooltipPosition="top" class="pointer" *ngIf="!empleado.activo" style="background: none !important;" (click)="cambiarEstado(true,empleado.clvEmpledo,empleado)"><i class="fas fa-check-circle"></i></a> -->
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

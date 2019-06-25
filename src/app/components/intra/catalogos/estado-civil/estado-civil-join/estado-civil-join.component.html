@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="col-2" style="float: left !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <app-menu></app-menu>
+    </div>
+    <div class=" col-10 " style="float: right !important; margin-top: -90px !important; margin-bottom: 90px !important;">
+        <H1>Registrar empleado</H1>
+        <p-messages [(value)]="msgs"></p-messages>
+        <form #createForm="ngForm" class="contactForm title" style="background: none !important" *ngIf="estadoCivil">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresa el nombre del empleado" #nombre="ngModel" [(ngModel)]="estadoCivil.nombre" required/>
+                <br>
+                <p-message *ngIf="nombre.touched && !nombre.valid" severity="error" text="El  campo de nombre no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="clvEstadoCivil">Clave estado civil</label>
+                <input type="text" class="form-control" name="clvEstadoCivil" id="clvEstadoCivil" placeholder="Ingresa la clave de estado civil" #clvEstadoCivil="ngModel" [(ngModel)]="estadoCivil.clvEstadoCivil" required/>
+                <br>
+                <p-message *ngIf="clvEstadoCivil.touched && !clvEstadoCivil.valid" severity="error" text="El  campo de clave del estado civil no es valido"></p-message>
+
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Ingresa el tipo de estado civil" #tipo="ngModel" [(ngModel)]="estadoCivil.tipo" required/>
+                <br>
+                <p-message *ngIf="tipo.touched && !tipo.valid" severity="error" text="El  campo de tipo del estado civil no es valido"></p-message>
+
+            </div>
+
+
+            <div class="col-xs-12">
+                <button [disabled]="!createForm.valid" (click)="onSubmit(createForm)"> Registrar estado civil </button>
+                <!-- <a class="btn btn-primary" *ngIf="createForm.valid">Enviar</a> -->
+                <a class="btn btn-danger">Salir</a>
+            </div>
+        </form>
+        <p *ngIf="!estadoCivil" class="text-center" style="margin-top: 100px !important">
+            <p-progressSpinner></p-progressSpinner>
+        </p>
+    </div>
+
+</div>
+
+
+<!-- public nombre: string,
+        public clvEstadoCivil: string,
+        public fechaCreacion: string,
+        public activo: boolean,
+        public tipo: string,
+        public ultimaActualizacion: string   -->
