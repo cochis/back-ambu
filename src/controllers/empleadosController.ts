@@ -7,6 +7,10 @@ import { exists } from 'fs';
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('../services/jwt');
 class EmpleadosController {
+    public async listActivo(req: Request, res: Response): Promise<void> {
+        const empleados = await pool.query('SELECT * FROM empleados WHERE activo = 1 ');
+        res.json(empleados);
+    }
 
     public async test(req: Request, res: Response): Promise<any> {
         return res.status(200).send({ test: 'test' });

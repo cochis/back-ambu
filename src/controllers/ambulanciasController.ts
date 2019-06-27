@@ -7,6 +7,10 @@ class AmbulanciasController {
         const ambulancias = await pool.query('SELECT * FROM ambulancias');
         res.json(ambulancias);
     }
+    public async listActivo(req: Request, res: Response): Promise<void> {
+        const ambulancias = await pool.query('SELECT * FROM ambulancias  WHERE activo = 1');
+        res.json(ambulancias);
+    }
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { clvAmbulancia } = req.params;
@@ -16,6 +20,7 @@ class AmbulanciasController {
         }
         res.status(404).json({ text: "La ambulancia no existe." });
     }
+    
 
     public async create(req: Request, res: Response): Promise<void> {
         //SETEAMOS USUARIO PARA HACER LA BUSQUEDA POR USUARIO

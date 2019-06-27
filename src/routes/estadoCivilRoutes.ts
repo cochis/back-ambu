@@ -12,6 +12,7 @@ class EstadoCivilRoutes {
 
     config() {
         this.router.get('/', md_auth.ensureAuth , estadoCivilController.list);
+        this.router.get('/activo', md_auth.ensureAuth , estadoCivilController.listActivo);
         this.router.get('/:clvEstadoCivil',  md_auth.ensureAuth ,estadoCivilController.getOne);
         this.router.post('/', md_auth.ensureAuth , estadoCivilController.create);
         this.router.put('/:clvEstadoCivil', md_auth.ensureAuth , estadoCivilController.update);

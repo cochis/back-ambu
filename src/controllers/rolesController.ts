@@ -8,6 +8,10 @@ class RolesController {
         const roles = await pool.query('SELECT * FROM roles');
         res.json(roles);
     }
+    public async listActivo(req: Request, res: Response): Promise<void> {
+        const roles = await pool.query('SELECT * FROM roles WHERE activo = 1');
+        res.json(roles);
+    }
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { clvRol } = req.params;
@@ -87,14 +91,24 @@ class RolesController {
     }
     public async activated(req: Request, res: Response): Promise<void> {
         const { clvRol } = req.params;
+        console.log(req.body);
         req.body.activo = true;
-        req.body.ultimaActualizacion =  moment().format('YYYY-MM-DD HH:mm:ss');
-        const oldRol = req.body;
         var updateRol = await pool.query('UPDATE roles set ? WHERE clvRol = ?', [req.body, clvRol]);
         if (updateRol.affectedRows <= 0) {
             res.json({ error: "No se pudo localizar el rol" });
         } else {
-            res.json({ message: "El rol fue actualizado" });
+            res.json({ message: "El Rol fue activado" });
+        }
+    }
+    public async desactivated(req: Request, res: Response): Promise<void> {
+        const { clvRol } = req.params;
+        console.log(req.body);
+        req.body.activo = false;
+        var updateRol = await pool.query('UPDATE roles set ? WHERE clvRol = ?', [req.body, clvRol]);
+        if (updateRol.affectedRows <= 0) {
+            res.json({ error: "No se pudo localizar el rol" });
+        } else {
+            res.json({ message: "El Rol fue desactivado" });
         }
     }
 }

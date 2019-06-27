@@ -7,6 +7,10 @@ class RegistrosController {
         const registros = await pool.query('SELECT * FROM registros order by idRegistro DESC ');
         res.json(registros);
     }
+    public async listActivo(req: Request, res: Response): Promise<void> {
+        const registros = await pool.query('SELECT * FROM registros WHERE activo = 1  order by idRegistro DESC ');
+        res.json(registros);
+    }
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { clvRegistro } = req.params;

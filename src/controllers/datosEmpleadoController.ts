@@ -10,6 +10,11 @@ class DatosEmpleadoController {
         const datos = await pool.query('SELECT * FROM datosEmpleado');
         res.json(datos);
     }
+    public async listActivo(req: Request, res: Response): Promise<void> {
+
+        const datos = await pool.query('SELECT * FROM datosEmpleado WHERE activo = 1');
+        res.json(datos);
+    }
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { clvEmpleado } = req.params;

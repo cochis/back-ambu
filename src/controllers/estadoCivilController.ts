@@ -16,6 +16,11 @@ class EstadoCivilController {
         res.json(estadoCivil);
     }
 
+    public async listActivo(req: Request, res: Response): Promise<void> {
+        const estadoCivil = await pool.query('SELECT * FROM estadoCivil WHERE activo = 1');
+        res.json(estadoCivil);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { clvEstadoCivil } = req.params;
         const estadoCivil = await pool.query('SELECT * FROM estadoCivil  WHERE clvEstadoCivil = ? ORDER by idEstadoCivil LIMIT 1', [clvEstadoCivil]);

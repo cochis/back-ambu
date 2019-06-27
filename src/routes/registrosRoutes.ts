@@ -12,6 +12,7 @@ class RegistrosRoutes {
 
     config() {
         this.router.get('/',md_auth.ensureAuth , registrosController.list);
+        this.router.get('/activo',md_auth.ensureAuth , registrosController.listActivo);
         this.router.get('/:clvRegistro', md_auth.ensureAuth ,registrosController.getOne);
         this.router.get('/nombre/:nombre', md_auth.ensureAuth ,registrosController.getOneNombre);
         this.router.get('/busqueda/ultimo', md_auth.ensureAuth ,registrosController.last);

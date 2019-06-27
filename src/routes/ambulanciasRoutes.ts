@@ -12,6 +12,7 @@ class AmbulanciasRoutes {
 
     config() {
         this.router.get('/',md_auth.ensureAuth , ambulanciasController.list);
+        this.router.get('/activo',md_auth.ensureAuth , ambulanciasController.listActivo);
         this.router.get('/:clvAmbulancia', md_auth.ensureAuth ,ambulanciasController.getOne);
         this.router.post('/',md_auth.ensureAuth , ambulanciasController.create);
         this.router.put('/:clvAmbulancia',md_auth.ensureAuth , ambulanciasController.update);

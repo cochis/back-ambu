@@ -16,6 +16,7 @@ class EmpleadosRoutes {
         this.router.post('/' , empleadosController.create);
         this.router.post('/restore/',empleadosController.restore);
         this.router.get('/emple',empleadosController.list);
+        this.router.get('/activo',empleadosController.listActivo);
         this.router.get('/:clvEmpleado',md_auth.ensureAuth , empleadosController.getOne);
         this.router.post('/',md_auth.ensureAuth , empleadosController.create);
         this.router.put('/:clvEmpleado',md_auth.ensureAuth , empleadosController.update);

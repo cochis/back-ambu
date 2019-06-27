@@ -12,7 +12,10 @@ import contactoRoutes from './routes/contactoRoutes';
 import estadoCivilRoutes from './routes/estadoCivilRoutes';
 import ambulanciasRoutes from './routes/ambulanciasRoutes';
 import registrosRoutes from './routes/registrosRoutes';
-
+import localidadesRoutes from './routes/localidadesRoutes';
+import clientesRoutes from './routes/clientesRoutes';
+import formularioRegistroRoutes from './routes/formularioRegistroRoutes';
+import tipoCampoRoutes from './routes/tipoCampoRoutes';
 
 class Server {
 
@@ -38,12 +41,17 @@ class Server {
         this.app.use('/api/empleados', empleadosRoutes);
         this.app.use('/api/roles', rolesRoutes);
         this.app.use('/api/ambulancias', ambulanciasRoutes);
-        this.app.use('/api/sitios', sitiosRoutes);
         this.app.use('/api/login', loginEmpleadosRoutes);
         this.app.use('/api/datos-empleado', datosEmpleado);
         this.app.use('/api/send-contacto', contactoRoutes);
         this.app.use('/api/estado-civil', estadoCivilRoutes);
         this.app.use('/api/registro', registrosRoutes);
+        this.app.use('/api/localidades', localidadesRoutes);
+        this.app.use('/api/clientes', clientesRoutes); 
+        this.app.use('/api/sitios', sitiosRoutes);
+        this.app.use('/api/formularioRegistro', formularioRegistroRoutes);
+        this.app.use('/api/tipoCampoRoutes', tipoCampoRoutes);
+        
         
         this.app.get('*', function(req,res,next){res.sendFile('client/index.html')});     
         
@@ -51,7 +59,7 @@ class Server {
 
     start() {
         this.app.listen(this.app.get('port'), () => {
-            console.log('Server on port', this.app.get('port'));
+            console.log('Server on puerto', this.app.get('port'));
         });
     }
 
